@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj": {}
+  },
+  "projects": {
+    "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj",
+        "projectName": "HealthMonitoring",
+        "projectPath": "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj",
+        "packagesPath": "C:\\Users\\jailt\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jailt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "monoandroid13.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "monoandroid13.0": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "monoandroid13.0": {
+          "dependencies": {
+            "FirebaseDatabase.net": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "Xamarin.Android.Wear": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Xamarin.AndroidX.Legacy.Support.Core.UI": {
+              "target": "Package",
+              "version": "[1.0.0.6, )"
+            },
+            "Xamarin.AndroidX.PercentLayout": {
+              "target": "Package",
+              "version": "[1.0.0.6, )"
+            },
+            "Xamarin.AndroidX.Wear": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Xamarin.Firebase.Database": {
+              "target": "Package",
+              "version": "[120.3.0.1, )"
+            }
+          }
+        }
+      }
+    }
+  }
+}
