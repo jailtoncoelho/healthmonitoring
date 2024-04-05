@@ -11,11 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using static Java.Util.Jar.Attributes;
+using System.Threading.Tasks;
 
 namespace HealthMonitoring.Activities
 {
-    [Activity(Name = "com.jailton.healthmonitoring.LoginActivity")]
+    [Activity(Name = "com.jailton.healthmonitoring.LoginActivity", Theme = "@android:style/Theme.DeviceDefault")]
     public class LoginActivity : WearableActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -48,6 +48,7 @@ namespace HealthMonitoring.Activities
                 try
                 {
                     Toast.MakeText(this, "Usuário logado com sucesso!", ToastLength.Short)?.Show();
+                    Console.WriteLine("Usuário logado com sucesso!");
 
                     Finish();
                 }
@@ -59,8 +60,13 @@ namespace HealthMonitoring.Activities
             else
             {
                 Toast.MakeText(this, "Usuário não encontrado!", ToastLength.Short)?.Show();
+                Console.WriteLine("Usuário não encontrado!");
             }
         }
+
+
+
+
     }
 
 }

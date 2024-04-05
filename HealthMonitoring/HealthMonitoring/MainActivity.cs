@@ -21,17 +21,39 @@ namespace HealthMonitoring
 
             Button loginButton = FindViewById<Button>(Resource.Id.loginButton);
             loginButton.Click += LoginButton_Click;
+
+            ImageButton openGoogleMapsButton = FindViewById<ImageButton>(Resource.Id.googleMapsButton);
+            openGoogleMapsButton.Click += OpenGoogleMappsButton_Click;
+
+            ImageButton shareLocationButton = FindViewById<ImageButton>(Resource.Id.shareLocationButton);
+            shareLocationButton.Click += ShareLocationButton_Click;
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            // Criar uma intenção (Intent) para iniciar a nova Activity
+            // Cria uma intenção (Intent) para iniciar a nova Activity
             Intent intent = new Intent(this, typeof(LoginActivity));
 
-            // Iniciar a nova Activity
+            // Inicia Activity
+            StartActivity(intent);
+        }
+
+        private void OpenGoogleMappsButton_Click(object sender, EventArgs e)
+        {
+            // Abre o Google Maps
+            Intent intent = new Intent(Intent.ActionView, Android.Net.Uri.Parse("http://maps.google.com"));
+
+            // Inicia Activity
+            StartActivity(intent);
+        }
+
+        private void ShareLocationButton_Click(object sender, EventArgs e)
+        {
+            // Cria uma intenção (Intent) para iniciar a nova Activity
+            Intent intent = new Intent(this, typeof(LocalizacaoActivity));
+
+            // Inicia Activity
             StartActivity(intent);
         }
     }
 }
-
-

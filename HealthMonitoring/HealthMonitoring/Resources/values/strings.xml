@@ -9,4 +9,6 @@
     Desenvolvimento para Dispositivos Móveis no IFPR de Telêmaco Borba</string>
 
     <string name="app_login">Login</string>
+    <string name="app_location">Location</string>
+  
 </resources>

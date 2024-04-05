@@ -396,3 +396,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /AndroidApp/Resources/views/InstitutionView.cs
+/HealthMonitoring/HealthMonitoring/.vs/HealthMonitoring.csproj.dtbcache.json
