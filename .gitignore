@@ -96,6 +96,7 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+HealthMonitoring/HealthMonitoring/obj/
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
@@ -397,3 +398,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /AndroidApp/Resources/views/InstitutionView.cs
 /HealthMonitoring/HealthMonitoring/.vs/HealthMonitoring.csproj.dtbcache.json
+/HealthMonitoring/HealthMonitoring/obj
