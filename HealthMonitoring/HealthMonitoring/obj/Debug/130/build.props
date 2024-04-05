@@ -25,11 +25,11 @@ androidgeneratejnimarshalmethods=false
 os=windows_nt
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-_nugetassetstimestamp=638446595945765035
+_nugetassetstimestamp=638479375256755569
 typemapkind=strings-asm
 androidsupportedabis=arm64-v8a
 armeabi-v7a
 x86
 x86_64
 androidmanifestplaceholders=
-projectfullpath=d:\github\healthmonitoring\healthmonitoring\healthmonitoring\healthmonitoring.csproj
+projectfullpath=c:\users\jailton\documents\github\healthmonitoring\healthmonitoring\healthmonitoring\healthmonitoring.csproj

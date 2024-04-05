@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj": {}
+    "C:\\Users\\Jailton\\Documents\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj": {
+    "C:\\Users\\Jailton\\Documents\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj",
+        "projectUniqueName": "C:\\Users\\Jailton\\Documents\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj",
         "projectName": "HealthMonitoring",
-        "projectPath": "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj",
-        "packagesPath": "C:\\Users\\jailt\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\obj\\",
+        "projectPath": "C:\\Users\\Jailton\\Documents\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\HealthMonitoring.csproj",
+        "packagesPath": "C:\\Users\\Jailton\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jailton\\Documents\\GitHub\\healthmonitoring\\HealthMonitoring\\HealthMonitoring\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jailt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jailton\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,6 +33,11 @@
           "monoandroid13.0": {
             "projectReferences": {}
           }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
