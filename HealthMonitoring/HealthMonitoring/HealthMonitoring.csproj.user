@@ -5,6 +5,6 @@
     <SelectedPlatformGroup>Emulator</SelectedPlatformGroup>
     <ActiveDebugProfile>Wear OS Rectangular - API 33 %28Android 13.0 – API 33%29</ActiveDebugProfile>
     <DefaultDevice>wear_os_rectangular_-_api_33</DefaultDevice>
-    <AndroidDesignerPreferredDevice>wear_round_360_300dpi</AndroidDesignerPreferredDevice>
+    <AndroidDesignerPreferredDevice>wear_round</AndroidDesignerPreferredDevice>
   </PropertyGroup>
 </Project>
