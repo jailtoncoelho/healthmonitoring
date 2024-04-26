@@ -7,6 +7,12 @@ using Android.Support.Wearable.Activity;
 using Android.Widget;
 using Android.Content.PM;
 using System;
+using Firebase.Database;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using Firebase.Database.Query;
+using HealthMonitoring.BaseClasses;
+using System.Linq;
 
 
 namespace HealthMonitoring.Activities
@@ -23,8 +29,12 @@ namespace HealthMonitoring.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_localizacao);
 
-            Button shareLocationButton = FindViewById<Button>(Resource.Id.btnShareLocation);
-            shareLocationButton.Click += ShareLocationButton_Click;
+            if (MainActivity.current_user != null)
+            {
+                Switch switchShareLocation = FindViewById<Switch>(Resource.Id.switchShareLocation);
+                switchShareLocation.Activated = MainActivity.current_user.ShareLocation;
+                switchShareLocation.Click += SwitchShareLocation_ClickAsync;
+            }
 
             locationManager = (LocationManager)GetSystemService(Context.LocationService);
 
@@ -38,7 +48,37 @@ namespace HealthMonitoring.Activities
             }
         }
 
+        private async void SwitchShareLocation_ClickAsync(object sender, EventArgs e)
+        {
+            if (MainActivity.current_user != null)
+            {
+                
 
+                try
+                {
+                    Switch switchShareLocation = FindViewById<Switch>(Resource.Id.switchShareLocation);
+                    MainActivity.current_user.ShareLocation = switchShareLocation.Activated;
+
+                    FirebaseClient firebaseClient = new FirebaseClient("https://ifpr-alerts-default-rtdb.firebaseio.com/");
+
+                    // Obtem o snapshot do usuário
+                    var usuarioSnapshot = (await firebaseClient
+                        .Child("usuarios")
+                        .Child(MainActivity.current_user.Id)
+                        .OnceAsync<Usuario>()).FirstOrDefault();
+
+                    if (usuarioSnapshot != null)
+                    {
+                        Usuario usuario = usuarioSnapshot.Object;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
 
         private void StartLocationUpdates()
         {
@@ -84,28 +124,7 @@ namespace HealthMonitoring.Activities
         {
             // Método não utilizado neste exemplo
         }
-
-        public void ShareLocationButton_Click(object sender, EventArgs e)
-        {
-            if (lastLocation != null)
-            {
-                double latitude = lastLocation.Latitude;
-                double longitude = lastLocation.Longitude;
-
-                string message = "Latitude: " + latitude + "\nLongitude: " + longitude;
-                Intent sendIntent = new Intent();
-                sendIntent.SetAction(Intent.ActionSend);
-                sendIntent.PutExtra(Intent.ExtraText, message);
-                sendIntent.SetType("text/plain");
-                sendIntent.SetPackage("com.whatsapp");
-                StartActivity(sendIntent);
-            }
-            else
-            {
-                Toast.MakeText(this, "Location not available", ToastLength.Short).Show();
-            }
-        }
-
+  
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
