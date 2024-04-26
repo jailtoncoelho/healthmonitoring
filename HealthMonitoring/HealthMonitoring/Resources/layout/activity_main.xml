@@ -15,11 +15,6 @@
         android:orientation="vertical"
         android:gravity="center"
         app:boxedEdges="all">
-        <Button
-            android:text="@string/app_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/loginButton" />
 
         <ImageView
             android:src="@mipmap/ic_launcher"
@@ -62,8 +57,5 @@
                 android:contentDescription="Google Maps" />
 
         </LinearLayout>
-
-
-
     </LinearLayout>
 </androidx.wear.widget.DismissibleFrameLayout>

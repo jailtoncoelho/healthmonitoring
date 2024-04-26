@@ -8,23 +8,34 @@
     android:gravity="center"
     android:padding="@dimen/box_inset_layout_padding">
 
+    <ImageView
+        android:id="@+id/imageViewLocation"
+        android:src="@android:drawable/ic_dialog_map"
+        android:layout_marginVertical="@dimen/inner_frame_layout_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"   
+        android:paddingBottom="10px"
+        android:contentDescription="Localização" />
+
     <TextView
         android:id="@+id/latitueTextView"
         android:text="Latitude: "
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"/>
 
     <TextView
         android:id="@+id/longitudeTextView"
         android:text="Longitude: "
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"/>
 
-    <Button
-        android:id="@+id/btnShareLocation"
+
+    <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Share Location"
-        android:layout_centerInParent="true"/>
+        android:text="Compartilhar: "
+        android:id="@+id/switchShareLocation" />
 
 </LinearLayout>
