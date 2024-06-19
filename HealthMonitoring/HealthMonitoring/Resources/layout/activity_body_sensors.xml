@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:theme="@android:style/Theme.DeviceDefault"
+    android:padding="@dimen/box_inset_layout_padding">
+    <TextView
+        android:text="Body Sensors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:paddingBottom="10px"/>
+    <TextView
+        android:id="@+id/body_sensor_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Sensor: XX"
+        android:layout_gravity="left"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/accuracy_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_below="@id/accuracy_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Precisão do sensor: --"
+        android:textSize="14sp"
+        android:textColor="@android:color/white" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compartilhar: "
+        android:id="@+id/switchShareBodySensors" />
+
+
+
+</LinearLayout>

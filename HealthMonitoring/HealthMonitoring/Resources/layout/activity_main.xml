@@ -29,11 +29,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/app_health_monitoring" />
-      
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageButton
@@ -42,19 +42,22 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"                
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
                 android:contentDescription="Location" />
 
+       
+
             <ImageButton
-                android:id="@+id/googleMapsButton"
+                android:id="@+id/oxigenSaturationButton"
+                android:src="@mipmap/ic_frequencia_cardiaca"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@android:drawable/ic_dialog_map"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
                 android:background="@android:color/transparent"
-                android:layout_centerInParent="true"
-                android:onClick="openGoogleMaps"
-                android:contentDescription="Google Maps" />
+                android:contentDescription="Body Sensors" />
 
         </LinearLayout>
     </LinearLayout>

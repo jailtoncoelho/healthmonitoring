@@ -11,8 +11,6 @@ using Firebase.Database;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using Firebase.Database.Query;
-using HealthMonitoring.BaseClasses;
-using System.Linq;
 
 
 namespace HealthMonitoring.Activities
@@ -29,12 +27,14 @@ namespace HealthMonitoring.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_localizacao);
 
+            Switch switchShareLocation = FindViewById<Switch>(Resource.Id.switchShareLocation);
             if (MainActivity.current_user != null)
-            {
-                Switch switchShareLocation = FindViewById<Switch>(Resource.Id.switchShareLocation);
-                switchShareLocation.Activated = MainActivity.current_user.ShareLocation;
-                switchShareLocation.Click += SwitchShareLocation_ClickAsync;
-            }
+                switchShareLocation.Checked = MainActivity.current_user.ShareLocation;
+            switchShareLocation.CheckedChange += SwitchShareLocation_CheckedChange;
+
+            ImageButton shareLocationButton = FindViewById<ImageButton>(Resource.Id.googleMapsButton);
+            shareLocationButton.Click += OpenGoogleMappsButton_Click;
+
 
             locationManager = (LocationManager)GetSystemService(Context.LocationService);
 
@@ -48,34 +48,29 @@ namespace HealthMonitoring.Activities
             }
         }
 
-        private async void SwitchShareLocation_ClickAsync(object sender, EventArgs e)
+        private void SwitchShareLocation_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
         {
             if (MainActivity.current_user != null)
             {
-                
-
                 try
                 {
-                    Switch switchShareLocation = FindViewById<Switch>(Resource.Id.switchShareLocation);
-                    MainActivity.current_user.ShareLocation = switchShareLocation.Activated;
+                    MainActivity.current_user.ShareLocation = e.IsChecked;
 
                     FirebaseClient firebaseClient = new FirebaseClient("https://ifpr-alerts-default-rtdb.firebaseio.com/");
 
-                    // Obtem o snapshot do usuário
-                    var usuarioSnapshot = (await firebaseClient
+                    var jsonDados = JsonConvert.SerializeObject(MainActivity.current_user);
+
+                    firebaseClient
                         .Child("usuarios")
                         .Child(MainActivity.current_user.Id)
-                        .OnceAsync<Usuario>()).FirstOrDefault();
+                        .PutAsync(jsonDados);
 
-                    if (usuarioSnapshot != null)
-                    {
-                        Usuario usuario = usuarioSnapshot.Object;
-                    }
-
+                    Toast.MakeText(this, "Usuário alterado com sucesso!", ToastLength.Short)?.Show();
+                    Finish();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-
+                    Toast.MakeText(this, "Não foi possível salvar as alterações!", ToastLength.Short)?.Show();
                 }
             }
         }
@@ -95,7 +90,7 @@ namespace HealthMonitoring.Activities
             base.OnPause();
         }
 
-        public void OnLocationChanged(Location location)
+        public void OnLocationChanged(Android.Locations.Location location)
         {
             if (location == null)
                 return;
@@ -108,6 +103,40 @@ namespace HealthMonitoring.Activities
 
             TextView longitudeTextView = FindViewById<TextView>(Resource.Id.longitudeTextView);
             longitudeTextView.Text = "Longitude: " + longitude.ToString("0.0000");
+
+            SaveLastLocationAsync(latitude, longitude);
+        }
+
+        private async Task SaveLastLocationAsync(double latitude, double longitude)
+        {
+            if (MainActivity.current_user != null)
+            {
+                try
+                {
+                    FirebaseClient firebaseClient = new FirebaseClient("https://ifpr-alerts-default-rtdb.firebaseio.com/");
+
+                    // Crie um objeto com os dados que deseja salvar
+                    var dados = new
+                    {
+                        Latitude = latitude,
+                        Longitude = longitude
+                    };
+
+                    string jsonDados = JsonConvert.SerializeObject(dados);
+
+                    await firebaseClient
+                        .Child("location")
+                        .Child(MainActivity.current_user.Id)
+                        .Child(DateTime.Now.Year.ToString())
+                        .Child(DateTime.Now.Month.ToString())
+                        .Child(DateTime.Now.Day.ToString())
+                        .PostAsync(jsonDados);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
         }
 
         public void OnProviderDisabled(string provider)
@@ -124,7 +153,7 @@ namespace HealthMonitoring.Activities
         {
             // Método não utilizado neste exemplo
         }
-  
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -140,6 +169,50 @@ namespace HealthMonitoring.Activities
                     Toast.MakeText(this, "Location permission denied.", ToastLength.Short).Show();
                 }
             }
+        }
+
+
+        private async Task<bool> IsGoogleMapsInstalled()
+        {
+            var packageManager = PackageManager;
+            try
+            {
+                packageManager.GetPackageInfo("com.google.android.apps.maps", 0);
+                return true;
+            }
+            catch (PackageManager.NameNotFoundException)
+            {
+                return false;
+            }
+        }
+
+
+        private void OpenGoogleMappsButton_Click(object sender, EventArgs e)
+        {
+            CheckAndOpenGoogleMaps();            
+        }
+
+        private async void CheckAndOpenGoogleMaps()
+        {
+            var isGoogleMapsInstalled = await IsGoogleMapsInstalled();
+            if (!isGoogleMapsInstalled)
+            {
+                Toast.MakeText(this, "Google Maps não está instalado.", ToastLength.Long).Show();
+                return;
+            }
+
+            var location = lastLocation;
+            if (location == null)
+            {
+                Toast.MakeText(this, "Não foi possível obter a localização.", ToastLength.Long).Show();
+                return;
+            }
+
+            var lat = location.Latitude;
+            var lon = location.Longitude;
+            var uri = $"geo:{lat},{lon}";
+            var intent = new Intent(Intent.ActionView, Android.Net.Uri.Parse(uri));
+            StartActivity(intent);
         }
 
     }

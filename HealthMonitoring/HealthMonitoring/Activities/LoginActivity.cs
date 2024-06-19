@@ -1,20 +1,11 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.Wearable.Activity;
-using Android.Views;
 using Android.Widget;
 using Firebase.Database;
-using Firebase.Database.Query;
 using HealthMonitoring.BaseClasses;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
-using static Android.Content.ClipData;
 
 namespace HealthMonitoring.Activities
 {
@@ -44,7 +35,9 @@ namespace HealthMonitoring.Activities
           {
               Id = item.Key,
               Email = item.Object.Email,
-              Senha = item.Object.Senha
+              Senha = item.Object.Senha,
+              ShareBodySensors = item.Object.ShareBodySensors,
+              ShareLocation = item.Object.ShareLocation
           }).Where(item => item.Email == email).FirstOrDefault();
 
             if (usuario != null)
