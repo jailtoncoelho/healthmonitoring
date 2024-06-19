@@ -7,6 +7,6 @@
         public string Email { get; set; }
         public string Senha { get; set; }
         public bool ShareLocation { get; set; }
-        public bool ShareHealth { get; set; }
+        public bool ShareBodySensors { get; set; }
     }
 }
