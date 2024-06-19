@@ -189,7 +189,7 @@ namespace HealthMonitoring.Activities
 
         private void OpenGoogleMappsButton_Click(object sender, EventArgs e)
         {
-            CheckAndOpenGoogleMaps();            
+            CheckAndOpenGoogleMaps();
         }
 
         private async void CheckAndOpenGoogleMaps()

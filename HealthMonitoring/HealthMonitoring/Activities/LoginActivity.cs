@@ -11,7 +11,7 @@ namespace HealthMonitoring.Activities
 {
     [Activity(Name = "com.jailton.healthmonitoring.LoginActivity", Theme = "@android:style/Theme.DeviceDefault")]
     public class LoginActivity : WearableActivity
-    {        
+    {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -50,11 +50,12 @@ namespace HealthMonitoring.Activities
                         MainActivity.current_user = usuario;
 
                         Finish();
-                    } else
+                    }
+                    else
                     {
                         Toast.MakeText(this, "Senha incorreta!", ToastLength.Short)?.Show();
                     }
-                    
+
                 }
                 catch (Exception ex)
                 {
